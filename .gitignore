@@ -3,6 +3,9 @@
 *~
 __pycache__
 myvenv
-db.sqlite3
 /static
 .DS_Store
+env
+local_settings.py
+.idea
+db.sqlite3
