@@ -6,6 +6,6 @@ myvenv
 /static
 .DS_Store
 env
-local_settings.py
+mysite/local_settings.py
 .idea
 db.sqlite3
