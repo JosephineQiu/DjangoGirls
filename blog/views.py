@@ -29,14 +29,24 @@ def post_list(request):
     for post in posts:
         posting = post.text
 
-        translation = language_translator.translate(
-            text=post.text, model_id='en-es').get_result()
-        obj = (json.dumps(translation, indent=2, ensure_ascii=False))
-        print(obj)
-        obj2 = json.loads(obj)
-        post.obj2 = obj2['translations'][0]['translation']
-        post.w_count = obj2['word_count']
-        post.c_count = obj2['character_count']
+        translation_ch = language_translator.translate(
+            text=post.text, model_id='en-zh-TW').get_result()
+        translation_fr = language_translator.translate(
+            text=post.text, model_id='en-fr').get_result()
+        obj_ch = (json.dumps(translation_ch, indent=2, ensure_ascii=False))
+        print(obj_ch)
+        obj2_ch = json.loads(obj_ch)
+        post.obj2_ch = obj2_ch['translations'][0]['translation']
+        post.w_count_ch = obj2_ch['word_count']
+        post.c_count_ch = obj2_ch['character_count']
+
+        obj_fr = (json.dumps(translation_fr, indent=2, ensure_ascii=False))
+        print(obj_fr)
+        obj2_fr = json.loads(obj_fr)
+        post.obj2_fr = obj2_fr['translations'][0]['translation']
+        post.w_count_fr = obj2_fr['word_count']
+        post.c_count_fr = obj2_fr['character_count']
+
 
         tone_input = ToneInput(post.text)
         tone = service.tone(tone_input=tone_input, content_type="application/json")
