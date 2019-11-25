@@ -24,13 +24,12 @@
            </thead>
            <tr>
                {% for tone_type in tone_type %}
+                   {% for tone_score in tone_score %}
                    <td>{{ tone_type }}</td>
-                   {% endfor %}
 
-
-               {% for tone_score in tone_score %}
                    <td>{{ tone_score }}</td>
                    {% endfor %}
+           {% endfor %}
            </tr>
 
        </table>
