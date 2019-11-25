@@ -23,15 +23,14 @@
            <th>Tone Score</th>
            </thead>
            <tr>
-               <td>{% for tone_type in tone_type %}
-                   {{ tone_type }}
+               {% for tone_type in tone_type %}
+                   <td>{{ tone_type }}</td>
                    {% endfor %}
-               </td>
-               <td>
+
+
                {% for tone_score in tone_score %}
-                   {{ tone_score }}
+                   <td>{{ tone_score }}</td>
                    {% endfor %}
-               </td>
            </tr>
 
        </table>
