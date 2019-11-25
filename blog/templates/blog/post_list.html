@@ -8,15 +8,34 @@
            </div>
            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
            <p>{{ post.text|linebreaksbr }}</p><span style="background-color:yellow">Watson Says:</span>
-           <p>Translation to Chinese(traditional): {{ post.obj2_ch}}</p>
-           <p>Word Count: {{ post.w_count_ch}} |
-           Letter Count: {{ post.c_count_ch}}</p>
-           <p>Translation to French: {{ post.obj2_fr }}</p>
-           <p>Word Count: {{ post.w_count_fr}} |
-           Letter Count: {{ post.c_count_fr}}</p>
-           <p> Tone Analyzer Results:  {{ post.tone3}}
+           <p><b>Translation to Chinese(traditional):</b> {{ post.obj2_ch}}</p>
+           <p><b>Word Count:</b> {{ post.w_count_ch}} |
+           <b>Letter Count:</b> {{ post.c_count_ch}}</p>
+           <p><b>Translation to French:</b> {{ post.obj2_fr }}</p>
+           <p><b>Word Count:</b> {{ post.w_count_fr}} |
+               <b>Letter Count:</b> {{ post.c_count_fr}}</p>
+           <p> <b>Tone Analyzer Results: Tone Category:</b>
+               {{ post.tone_type }} | <b>Tone Score:</b> {{ post.tone_score }}</p>
+        <p>
+            <table>
+           <thead>
+           <th>Tone Category</th>
+           <th>Tone Score</th>
+           </thead>
+           <tr>
+               <td>{% for tone_type in tone_type %}
+                   {{ tone_type }}
+                   {% endfor %}
+               </td>
+               <td>
+               {% for tone_score in tone_score %}
+                   {{ tone_score }}
+                   {% endfor %}
+               </td>
+           </tr>
 
-           </p>
+       </table>
+        </p>
        </div>
    {% endfor %}
 {% endblock %}

@@ -48,13 +48,24 @@ def post_list(request):
         post.c_count_fr = obj2_fr['character_count']
 
 
+        # tone_input = ToneInput(post.text)
+        # post.tone = service.tone(tone_input=tone_input, content_type="application/json")
+        # tone2 = str(tone)
+        # post.tone3 = (tone2[1:500])
+        # print(post.tone3)
+
         tone_input = ToneInput(post.text)
         tone = service.tone(tone_input=tone_input, content_type="application/json")
-        tone2 = str(tone)
-        post.tone3 = (tone2[1:500])
-        print(post.tone3)
+        tone_type = []
+        tone_score = []
+        document_tones = tone.result["document_tone"]["tones"]
+        i = 0
 
-    return render(request, 'blog/post_list.html', {'posts': posts})
+        for i in range(len(document_tones)):
+            tone_type.append(document_tones[i]["tone_name"])
+            tone_score.append(document_tones[i]["score"])
+
+        return render(request, 'blog/post_list.html', {'posts': posts,'tone_type':tone_type,'tone_score':tone_score})
 
 
 def post_detail(request, pk):
