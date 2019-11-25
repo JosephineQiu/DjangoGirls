@@ -14,26 +14,24 @@
            <p><b>Translation to French:</b> {{ post.obj2_fr }}</p>
            <p><b>Word Count:</b> {{ post.w_count_fr}} |
                <b>Letter Count:</b> {{ post.c_count_fr}}</p>
-           <p> <b>Tone Analyzer Results: Tone Category:</b>
-               {{ post.tone_type }} | <b>Tone Score:</b> {{ post.tone_score }}</p>
-        <p>
-            <table>
-           <thead>
-           <th>Tone Category</th>
-           <th>Tone Score</th>
-           </thead>
-           {% for tone_type in tone_type %}
-           <tr>
-               <td>{{ tone_type }}</td>
-           {% endfor %}
-           {% for tone_score in tone_score %}
-               <td>{{ tone_score }}</td>
-           {% endfor %}
-           </tr>
+{% endfor %}
+           </div>
 
+<table>
+    <tr>
+        <th>Tone Category: </th>
+        {% for tone_type in tone_type %}
+        <td style="padding-left: 10px">  {{ tone_type }}  </td>
+        {% endfor %}
+    </tr>
 
-       </table>
-        </p>
-       </div>
-   {% endfor %}
+    <tr>
+        <th>Tone Score: </th>
+        {% for tone_score in tone_score %}
+        <td style="padding-left: 5px">  {{ tone_score }}  </td>
+        {% endfor %}
+    </tr>
+
+</table>
+
 {% endblock %}
